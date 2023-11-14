@@ -157,3 +157,20 @@ writer.close();
 
 return true;
 ```
+
+### Interesting 302s
+
+> xnl-h4ck3r
+
+Get 302 responses that have a large Content-Length (excluding href links) or more than one href link. This suggests it could have interesting content, and could also possibly be bypassed with match and replace for `302 Found` to `200 OK` and removing `Location` header:
+
+```java
+if (!requestResponse.hasResponse()) {
+    return false;
+}
+var response = requestResponse.response();
+var bodyWIthoutLinks = response.body().toString().toLowerCase().replaceAll("<a.*</a>", "");
+var bodyLength = bodyWIthoutLinks.length();
+var numberOfHrefs = response.body().countMatches("href=", false);
+return response.statusCode() == 302 && (bodyLength > 3000 || numberOfHrefs > 1);
+```
