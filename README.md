@@ -160,7 +160,7 @@ return true;
 
 ### Interesting 302s
 
-> xnl-h4ck3r
+> @xnl-h4ck3r
 
 Get 302 responses that have a large Content-Length (excluding href links) or more than one href link. This suggests it could have interesting content, and could also possibly be bypassed with match and replace for `302 Found` to `200 OK` and removing `Location` header:
 
