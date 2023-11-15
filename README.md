@@ -169,8 +169,11 @@ if (!requestResponse.hasResponse()) {
     return false;
 }
 var response = requestResponse.response();
+if (response.statusCode() != 302) {
+	return false;
+}
 var bodyWIthoutLinks = response.body().toString().toLowerCase().replaceAll("<a.*</a>", "");
 var bodyLength = bodyWIthoutLinks.length();
 var numberOfHrefs = response.body().countMatches("href=", false);
-return response.statusCode() == 302 && (bodyLength > 1000 || numberOfHrefs > 1);
+return (bodyLength > 1000 || numberOfHrefs > 1);
 ```
