@@ -1,3 +1,7 @@
+# Deprecation Notice
+
+This project has been deprecated in favour of <https://github.com/PortSwigger/bambdas>
+
 # BurpSuite Bambda Filters
 
 This repository is a amalgamation of Bambda filters that can be considered useful during testing!
